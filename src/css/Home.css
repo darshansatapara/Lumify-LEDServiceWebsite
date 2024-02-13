@@ -1,0 +1,23 @@
+/* ...existing styles if you have any... */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .app {
+    padding: 0 2rem; /* Add some horizontal padding */
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center content */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .app {
+      padding: 2rem 1rem; /* Adjust padding for smaller screens */
+    }
+  }
+  
+  /* Include CSS for individual components here */
+  
