@@ -31,7 +31,7 @@ const ProductHighlights = () => {
           </div>
           <div className="card">
             <img src="logoes/productHighlight3.avif" alt="Product 3" />
-            <p>Dimmable & Smart Control</p>
+            <h3>Dimmable & Smart Control</h3>
             <p>
               Create the perfect ambiance and optimize your lighting with our
               smart control options.

@@ -1,0 +1,73 @@
+.about {
+    padding: 4rem 0;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .about h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .about p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .about-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .info-card {
+    text-align: center;
+  }
+  
+  .info-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .info-card p {
+    font-size: 1.6rem;
+  }
+  
+  .values-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .values-list li {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .team-member {
+    border: 1px solid #ddd;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+  
+  .team-member h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .team-member p {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  

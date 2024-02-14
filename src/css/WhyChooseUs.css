@@ -1,0 +1,67 @@
+.why-choose-us {
+
+    background-color:#d1c19e;
+  }
+  
+.why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 80%;
+    height: 30%;
+    padding: 1rem 0.2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .benefit {
+    flex: 1 0 20rem;
+    text-align: left;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    background-image: url("../../public/logoes/whychoosebgforcard1.jpeg");
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .benefit i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .benefit p {
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+  }
+  

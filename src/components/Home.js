@@ -3,9 +3,9 @@ import "../css/Home.css";
 import HeroSection from "../components/HeroSection"
 import ProductHighlights from "../components/ProductHighlight";
 // import ServiceBlurb from "./components/ServiceBlurb";
-// import WhyChooseUs from "./components/WhyChooseUs";
+import WhyChooseUs from "../components/WhyChooseUs";
 // import TestimonialSlider from "./components/TestimonialSlider";
-// import Footer from "./components/Footer";
+import Footer from "../common/Footer";
 
 function HomePage() {
   return (
@@ -13,9 +13,9 @@ function HomePage() {
       <HeroSection />
       <ProductHighlights />
       {/* <ServiceBlurb /> */}
-      {/* <WhyChooseUs /> */}
+      <WhyChooseUs />
       {/* <TestimonialSlider /> */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

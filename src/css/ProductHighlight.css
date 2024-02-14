@@ -1,6 +1,6 @@
 .product-highlights {
-    padding: 4rem 0;
-    background-color: #f2f2f2;
+    padding: 2rem 0;
+    background-color: #bdac84d1;
   }
  .heading{
     height: 100px;
@@ -12,12 +12,12 @@
     text-align: center;
     display: grid;
     grid-row: auto;
-    
   }
   
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    font-family: cursive;
   }
   
   p {
@@ -36,7 +36,7 @@
     margin: 1rem;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.414);
     text-align: center;
     padding: 2rem;
   }
@@ -55,6 +55,7 @@
   
   .explore-products-btn {
     background-color: #222;
+    margin-left: 10px;
     color: #fff;
     padding: 1rem 2rem;
     border: none;
