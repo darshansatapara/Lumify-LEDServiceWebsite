@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="container">
+      <div className="nav-container">
         <div>
           <NavLink to="/">
             <img
@@ -74,7 +74,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/profile" className="nav-links" onClick={toggleMenu}>
+              <NavLink to="/login" className="nav-links" onClick={toggleMenu}>
                 Login
               </NavLink>
             </li>

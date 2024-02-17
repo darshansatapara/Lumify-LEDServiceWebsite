@@ -3,14 +3,22 @@ import "./App.css";
 import Navbar from "./common/Navbar";
 import Home from "./components/Home";
 import About from "./components/Aboutus";
+import Services from "./components/Services";
+import Login from "./common/Login";
+import Register from "./common/Registration";
+import Products from "./components/Products";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
     </BrowserRouter>
   );

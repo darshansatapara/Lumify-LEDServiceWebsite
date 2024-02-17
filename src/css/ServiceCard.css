@@ -1,0 +1,60 @@
+.service-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .service-card img {
+    max-width: 60%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .service-card p {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 15px;
+  }
+  
+  /* Button style for more details */
+  .service-card button {
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .service-card button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .service-card {
+      padding: 15px;
+    }
+    
+    .service-card h3 {
+      font-size: 1.1rem;
+    }
+    
+    .service-card p {
+      font-size: 0.9rem;
+    }
+    
+    .service-card button {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -1,73 +1,114 @@
+/* Import fonts if needed */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+
 .about {
-    padding: 4rem 0;
-  }
-  
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  .about h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .about p {
-    font-size: 1.6rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  
+  padding: 40px;
+  /* Add a colorful background gradient with a subtle space theme */
+  background: linear-gradient(to right bottom, #35291d, #2a2e20e0 50%, #28231ad2 60%, #2f2a24e1);
+  background-size: cover;
+  /* Ensure full background coverage on responsive screens */
+  background-attachment: fixed;
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  color: #fff; /* Adjust text color for better contrast on the darker background */
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff; /* Adjust text color for better contrast on the darker background */
+}
+
+.about-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  text-align: center;
+  padding: 20px;
+  margin: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border with white transparency */
+  border-radius: 5px;
+  background-color:#be90524d; /* Semi-transparent background for better readability */
+  color: #fff; /* Keep text color white for contrast */
+}
+
+.values-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.values-list li {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #fff; /* Adjust text color for better contrast on the darker background */
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.team-member {
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border with white transparency */
+  border-radius: 5px;
+  padding: 20px;
+  background-color:rgb(137 112 73 / 55%); /* Semi-transparent background for better readability */
+  color: #fff; /* Keep text color white for contrast */
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 768px) {
   .about-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+    flex-direction: column;
   }
-  
+
   .info-card {
-    text-align: center;
+    flex: 1;
   }
-  
-  .info-card h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .info-card p {
-    font-size: 1.6rem;
-  }
-  
-  .values-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
-  }
-  
-  .values-list li {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-  
+
   .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
   }
-  
-  .team-member {
-    border: 1px solid #ddd;
-    padding: 2rem;
-    border-radius: 5px;
-  }
-  
-  .team-member h4 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .team-member p {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-  
+}
+
+/* Optional image customization (replace with your own space-themed image) */
+.about::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/logoes/bgforhero1.jpeg"); 
+  background-repeat: no-repeat;/* Replace with your image URL */
+  background-size: cover;
+  background-blend-mode: multiply; /* Blend the image with the background color */
+  opacity: 0.3; /* Adjust opacity for desired effect */
+  z-index: -1; /* Ensure the
+    image stays behind the content */
+}

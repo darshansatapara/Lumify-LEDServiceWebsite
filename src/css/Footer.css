@@ -4,9 +4,10 @@
     padding: 0rem 4rem;
   }
   
-  .container {
+  .footer-container {
     margin: 0 auto;
     height: fit-content;
+    display: flex;
   }
   
   .footer-content {

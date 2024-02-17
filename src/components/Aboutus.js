@@ -2,13 +2,13 @@ import React from 'react';
 import "../css/About.css";
 
 const About = () => {
-  const companyName = "BrightLights LED";
-  const yearFounded = Math.floor(Math.random() * 10) + 2010;
+  const companyName = "Lumify LED";
+  const yearFounded = 2022;
   const teamSize = Math.floor(Math.random() * 10) + 5;
   const awards = [
     "Best Eco-Friendly Company Award (2022)",
     "Top LED Lighting Provider (2023)",
-    "Customer Satisfaction Award (2021)",
+    "Customer Satisfaction Award (2022)",
   ];
   const randomAward = awards[Math.floor(Math.random() * awards.length)];
 
@@ -24,17 +24,17 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: "John Doe",
+      name: "S.Darshan ",
       position: "CEO",
       description: "Experienced leader with a passion for sustainability.",
     },
     {
-      name: "Jane Smith",
+      name: "S.Krisha",
       position: "Product Manager",
       description: "Expert in LED technology and lighting design.",
     },
     {
-      name: "Michael Johnson",
+      name: "P.Nishtha ",
       position: "Marketing Manager",
       description: "Creative strategist with a focus on digital marketing.",
     },
@@ -43,7 +43,7 @@ const About = () => {
 
   return (
     <section className="about">
-      <div className="container">
+      <div className="about-container">
         <h1>About {companyName}</h1>
         <p>{missionStatement}</p>
         <div className="about-info">
