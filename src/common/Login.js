@@ -20,7 +20,7 @@ const Login = () => {
     <div className="mainContainer1">
     <div className="mainContainer">
       <div className="login-container">
-        <h1>Login</h1>
+        <h1 className="heading-register">Login</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
@@ -40,9 +40,9 @@ const Login = () => {
           />
           <button type="submit">Login</button>
         </form>
-        <p>
+        <p className="not-account">
           Don't have an account?{" "}
-          <p onClick={handleRegisterClick} className="register-link ">Register here</p>
+          <span onClick={handleRegisterClick} className="register-link ">Register here</span>
         </p>
       </div>
     </div>

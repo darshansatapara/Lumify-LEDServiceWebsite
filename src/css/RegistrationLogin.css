@@ -12,12 +12,21 @@
   text-align: center;
 }
 
-h1 {
+.heading-register{
   font-size: 2.5rem;
   margin-bottom: 30px;
   color: #ffffff;
 }
 
+.not-account {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.not-account span {
+  color: #4caf50;
+  cursor: pointer;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -57,15 +66,7 @@ button:hover {
   background-color: #45a049;
 }
 
-p {
-  font-size: 1rem;
-  color: #ffffff;
-}
 
-p span {
-  color: #4caf50;
-  cursor: pointer;
-}
 
 /* Specific styles for registration page */
 .register-container {

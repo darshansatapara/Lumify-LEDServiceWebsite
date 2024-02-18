@@ -7,6 +7,9 @@ import Services from "./components/Services";
 import Login from "./common/Login";
 import Register from "./common/Registration";
 import Products from "./components/Products";
+import BestProducts from "./components/BestProducts";
+import Bookings from "./components/Booking";
+import WantService from "./components/WantService";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/bestproducts" element={<BestProducts />} />
+        <Route path="/mybookings" element={<Bookings />} />
+        <Route path="/bookservice" element={<WantService />} />
       </Routes>
     </BrowserRouter>
   );

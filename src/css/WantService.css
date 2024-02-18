@@ -1,0 +1,60 @@
+.want-service {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .want-service h1 {
+    text-align: center;
+  }
+  
+  .want-service form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .want-service label {
+    margin-top: 10px;
+  }
+  
+  .want-service input,
+  .want-service select,
+  .want-service textarea,
+  .want-service button {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #a05c5c;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .want-service button {
+    background-color: #007bff;
+    color: #5a3d3d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .want-service button:hover {
+    background-color: #0056b3;
+  }
+  
+  .want-service .error {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .want-service input,
+    .want-service select,
+    .want-service textarea,
+    .want-service button {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  
+    .want-service button {
+      padding: 8px;
+    }
+  }
+  

@@ -1,0 +1,61 @@
+.my-bookings {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333333;
+  }
+  
+  .bookings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Styling for BookingCard */
+  .booking-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .booking-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .booking-card p {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 15px;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .my-bookings {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .booking-card {
+      padding: 15px;
+    }
+  
+    .booking-card h3 {
+      font-size: 1.1rem;
+    }
+  
+    .booking-card p {
+      font-size: 0.9rem;
+    }
+  }
+  

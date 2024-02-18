@@ -51,11 +51,20 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/products"
+                to="/bookservice"
                 className="nav-links"
                 onClick={toggleMenu}
               >
-               Best Products
+                Book Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/bestproducts"
+                className="nav-links"
+                onClick={toggleMenu}
+              >
+                Best Products
               </NavLink>
             </li>
             <li>
@@ -66,7 +75,7 @@ const Navbar = () => {
 
             <li>
               <NavLink
-                to="/bookings"
+                to="/mybookings"
                 className="nav-links"
                 onClick={toggleMenu}
               >
