@@ -34,7 +34,8 @@
   
   .card {
     margin: 1rem;
-    background-color: #fff;
+    background-color: #bba172;
+    width: 15vw;
     border-radius: 5px;
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.414);
     text-align: center;
@@ -57,7 +58,7 @@
     background-color: #222;
     margin-left: 10px;
     color: #fff;
-    width: auto;
+    width: 10vw;
     padding: 1rem 2rem;
     border: none;
     border-radius: 5px;

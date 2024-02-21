@@ -1,7 +1,16 @@
 import React from "react";
 import "../css/ProductHighlight.css";
+import { useNavigate } from "react-router-dom";
+
+
 
 const ProductHighlights = () => {
+const navigate=useNavigate();
+
+  const navigateToProduct=()=>{
+    navigate("/products")
+  
+  }
   return (
     <section className="product-highlights">
       <div className="heading">
@@ -37,7 +46,7 @@ const ProductHighlights = () => {
               smart control options.
             </p>
           </div>
-        <button className="explore-products-btn">Explore All Products</button>
+        <button className="explore-products-btn" onClick={navigateToProduct}>Explore All Products</button>
         </div>
       </div>
     </section>
