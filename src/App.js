@@ -10,6 +10,7 @@ import Products from "./components/Products";
 import BestProducts from "./components/BestProducts";
 import Bookings from "./components/Booking";
 import WantService from "./components/WantService";
+import Payment from "./common/Payment";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/bestproducts" element={<BestProducts />} />
         <Route path="/mybookings" element={<Bookings />} />
         <Route path="/bookservice" element={<WantService />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </BrowserRouter>
   );
