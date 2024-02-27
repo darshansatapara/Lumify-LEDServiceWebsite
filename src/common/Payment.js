@@ -1,91 +1,98 @@
-import React, { useState } from "react";
-import "../css/Payment.css"; // Import your CSS file
+import React, { useState } from 'react';
+import '../css/Payment.css'; // Import your CSS file
 
 const PaymentPage = ({ bookingData, onPaymentSuccess }) => {
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [paymentDetails, setPaymentDetails] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    nameOnCard: '',
+    bank: '',
+    paymentApp: '',
+    qrCode: '',
+  });
 
-  const handlePayment = (method) => {
-    // Handle payment logic for the selected method
-    // For example, redirect to the respective payment gateway or show QR code
-    switch (method) {
-      case "onlineBanking":
-        // Redirect to online banking payment gateway
-        window.location.href = "https://example.com/online-banking-payment";
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPaymentDetails({ ...paymentDetails, [name]: value });
+  };
+
+  const handlePaymentSubmit = () => {
+    // Handle payment submission based on the selected method
+    switch (paymentMethod) {
+      case 'card':
+        // Submit card payment details
+        console.log('Submitting card payment details:', paymentDetails);
         break;
-      case "paytm":
-        // Redirect to Paytm payment gateway
-        window.location.href = "https://example.com/paytm-payment";
+      case 'bank':
+        // Submit bank payment details
+        console.log('Submitting bank payment details:', paymentDetails);
         break;
-      case "googlePay":
-        // Redirect to Google Pay payment gateway
-        window.location.href = "https://example.com/google-pay-payment";
+      case 'paymentApp':
+        // Submit payment app payment details
+        console.log('Submitting payment app payment details:', paymentDetails);
         break;
-      case "qrPayment":
-        // Show QR code for payment
-        alert("Show QR code for payment");
+      case 'qrCode':
+        // Submit QR code payment details
+        console.log('Submitting QR code payment details:', paymentDetails);
         break;
       default:
         break;
     }
-  };
-  const handleCardPayment = (cardType) => {
-    // Handle card payment logic
-    alert(`Processing card payment with ${cardType}`);
   };
 
   return (
     <div className="payment-page-container">
       <h1>Make Payment</h1>
       <div className="payment-options">
-        <button
-          className="payment-button"
-          onClick={() => handlePayment("onlineBanking")}
-        >
-          Online Banking
+        <button className="payment-option" onClick={() => setPaymentMethod('card')}>
+          Pay with Card
         </button>
-        <button
-          className="payment-button"
-          onClick={() => handlePayment("paytm")}
-        >
-          Paytm
+        <button className="payment-option" onClick={() => setPaymentMethod('bank')}>
+          Pay with Bank
         </button>
-        <button
-          className="payment-button"
-          onClick={() => handlePayment("googlePay")}
-        >
-          Google Pay
+        <button className="payment-option" onClick={() => setPaymentMethod('paymentApp')}>
+          Pay with Payment App
         </button>
-        <button
-          className="payment-button"
-          onClick={() => handlePayment("qrPayment")}
-        >
-          QR Payment
+        <button className="payment-option" onClick={() => setPaymentMethod('qrCode')}>
+          Pay with QR Code
         </button>
       </div>
-      <div className="card-payment">
-        <h2>Pay with Card</h2>
-        <div className="card-types">
-          <button
-            className="card-type"
-            onClick={() => handleCardPayment("Visa")}
-          >
-            Visa
-          </button>
-          <button
-            className="card-type"
-            onClick={() => handleCardPayment("Mastercard")}
-          >
-            Mastercard
-          </button>
-          <button
-            className="card-type"
-            onClick={() => handleCardPayment("American Express")}
-          >
-            American Express
-          </button>
-          {/* Add more card types as needed */}
+      {paymentMethod && (
+        <div className="payment-details">
+          <h2>{paymentMethod === 'card' ? 'Card Details' : paymentMethod === 'bank' ? 'Bank Details' : paymentMethod === 'paymentApp' ? 'Payment App Details' : 'QR Code Details'}</h2>
+          <form onSubmit={handlePaymentSubmit}>
+            {paymentMethod === 'card' && (
+              <>
+                <input type="text" name="cardNumber" placeholder="Card Number" onChange={handleInputChange} required />
+                <input type="text" name="expiryDate" placeholder="Expiry Date" onChange={handleInputChange} required />
+                <input type="text" name="cvv" placeholder="CVV" onChange={handleInputChange} required />
+                <input type="text" name="nameOnCard" placeholder="Name on Card" onChange={handleInputChange} required />
+              </>
+            )}
+            {paymentMethod === 'bank' && (
+              <>
+                <input type="text" name="bank" placeholder="Bank Name" onChange={handleInputChange} required />
+                {/* Add more bank-related inputs as needed */}
+              </>
+            )}
+            {paymentMethod === 'paymentApp' && (
+              <>
+                <input type="text" name="paymentApp" placeholder="Payment App" onChange={handleInputChange} required />
+                {/* Add more payment app-related inputs as needed */}
+              </>
+            )}
+            {paymentMethod === 'qrCode' && (
+              <>
+                <input type="text" name="qrCode" placeholder="QR Code" onChange={handleInputChange} required />
+                {/* Add more QR code-related inputs as needed */}
+              </>
+            )}
+            <button type="submit">Submit Payment</button>
+          </form>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -46,8 +46,8 @@ const navigate=useNavigate();
               smart control options.
             </p>
           </div>
-        <button className="explore-products-btn" onClick={navigateToProduct}>Explore All Products</button>
         </div>
+        <button className="explore-products-btn" onClick={navigateToProduct}>Explore All Products</button>
       </div>
     </section>
   );

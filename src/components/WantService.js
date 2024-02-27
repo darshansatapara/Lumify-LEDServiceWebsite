@@ -1,16 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import '../css/WantService.css'; // Import your CSS file
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "../css/WantService.css"; // Import your CSS file
+import { useNavigate } from "react-router-dom";
 
 const WantService = () => {
-  const [service, setService] = useState('');
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]); // Default to today's date
-  const [time, setTime] = useState('');
-  const [numberOfRooms, setNumberOfRooms] = useState('');
-  const [roomSize, setRoomSize] = useState('');
-  const [ledProducts, setLedProducts] = useState('');
-  const [location, setLocation] = useState('');
-  const [pinCode, setPinCode] = useState('');
+  const formatDate = (date) => {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    let month = "" + (d.getMonth() + 1);
+    let day = "" + d.getDate();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [day, month, year].join(" ");
+  };
+
+  const [service, setService] = useState("");
+  const [date, setDate] = useState(formatDate(new Date())); // Default to today's date
+  const [time, setTime] = useState("");
+  const [numberOfRooms, setNumberOfRooms] = useState(1);
+  const [roomSize, setRoomSize] = useState("");
+  const [ledProducts, setLedProducts] = useState("");
+  const [location, setLocation] = useState("");
+  const [pinCode, setPinCode] = useState("");
   const [serviceDetails, setServiceDetails] = useState([]); // Store available service details
   const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
   const [submissionError, setSubmissionError] = useState(null); // Store any submission errors
@@ -21,9 +33,17 @@ const WantService = () => {
     const fetchServiceDetails = async () => {
       // Mock service details
       const data = [
-        { id: 1, name: 'Installation' },
-        { id: 2, name: 'Repair' },
-        { id: 3, name: 'Custom Design' },
+        {
+          id: 1,
+          name: "Installation",
+          details: "Installation of LED products",
+        },
+        { id: 2, name: "Repair", details: "Repair of LED products" },
+        {
+          id: 3,
+          name: "Custom Design",
+          details: "Custom design of LED products",
+        },
       ];
       setServiceDetails(data);
     };
@@ -32,31 +52,36 @@ const WantService = () => {
   }, []);
 
   const handleServiceChange = (event) => {
-    setService(event.target.value);
+    const value = event.target.value;
+    setService(value);
+    if (value === "3") {
+      // If custom design is selected, reset custom design details
+      setLedProducts("");
+    }
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     switch (name) {
-      case 'date':
+      case "date":
         setDate(value);
         break;
-      case 'time':
+      case "time":
         setTime(value);
         break;
-      case 'numberOfRooms':
-        setNumberOfRooms(value);
+      case "numberOfRooms":
+        setNumberOfRooms(Math.max(parseInt(value), 1)); // Ensure minimum value is 1
         break;
-      case 'roomSize':
+      case "roomSize":
         setRoomSize(value);
         break;
-      case 'ledProducts':
+      case "ledProducts":
         setLedProducts(value);
         break;
-      case 'location':
+      case "location":
         setLocation(value);
         break;
-      case 'pinCode':
+      case "pinCode":
         setPinCode(value);
         break;
       default:
@@ -73,9 +98,9 @@ const WantService = () => {
       // Implement form validation (add your validation logic here)
 
       // Submit booking data to your backend (replace with your API call or logic)
-      const response = await fetch('https://api.example.com/bookings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("https://api.example.com/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           service,
           date,
@@ -95,7 +120,7 @@ const WantService = () => {
       const bookingData = await response.json();
 
       // Handle successful booking (clear form, show confirmation, etc.)
-      console.log('Booking created successfully:', bookingData);
+      console.log("Booking created successfully:", bookingData);
       clearForm(); // Add function to clear form fields
     } catch (error) {
       setSubmissionError(error.message);
@@ -105,25 +130,25 @@ const WantService = () => {
   };
 
   const clearForm = () => {
-    setService('');
-    setDate(new Date().toISOString().split('T')[0]);
-    setTime('');
-    setNumberOfRooms('');
-    setRoomSize('');
-    setLedProducts('');
-    setLocation('');
-    setPinCode('');
+    setService("");
+    setDate(formatDate(new Date()));
+    setTime("");
+    setNumberOfRooms(1);
+    setRoomSize("");
+    setLedProducts("");
+    setLocation("");
+    setPinCode("");
   };
 
   const goForPayment = () => {
-    navigate('/payment');
+    navigate("/payment");
   };
 
   return (
     <div className="want-service">
       <h1>Want Service</h1>
       <form onSubmit={handleSubmit}>
-        {serviceDetails.length > 0 && ( // Render the select dropdown only when serviceDetails are available
+        {serviceDetails.length > 0 && (
           <>
             <label htmlFor="service">Service:</label>
             <select
@@ -139,6 +164,31 @@ const WantService = () => {
                 </option>
               ))}
             </select>
+            {service === "3" && ( // Show custom design details for custom design service
+              <>
+                <label htmlFor="ledProducts">Custom Design Details:</label>
+                <input
+                  type="text"
+                  id="ledProducts"
+                  name="ledProducts"
+                  value={ledProducts}
+                  onChange={handleInputChange}
+                />
+              </>
+            )}
+          </>
+        )}
+
+        {service === "2" && (
+          <>
+            <label htmlFor="repairDetails">Repair Details:</label>
+            <input
+              type="text"
+              id="repairDetails"
+              name="repairDetails"
+              value={ledProducts}
+              onChange={handleInputChange}
+            />
           </>
         )}
 
@@ -166,6 +216,7 @@ const WantService = () => {
           id="numberOfRooms"
           name="numberOfRooms"
           value={numberOfRooms}
+          min="1"
           onChange={handleInputChange}
         />
 
@@ -175,15 +226,6 @@ const WantService = () => {
           id="roomSize"
           name="roomSize"
           value={roomSize}
-          onChange={handleInputChange}
-        />
-
-        <label htmlFor="ledProducts">LED Products Needed:</label>
-        <input
-          type="text"
-          id="ledProducts"
-          name="ledProducts"
-          value={ledProducts}
           onChange={handleInputChange}
         />
 
@@ -206,7 +248,7 @@ const WantService = () => {
         />
 
         <button type="submit" disabled={isSubmitting} onClick={goForPayment}>
-          Submit
+          Book Now
         </button>
         {submissionError && <p className="error">{submissionError}</p>}
       </form>

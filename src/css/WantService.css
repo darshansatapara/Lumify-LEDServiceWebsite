@@ -1,118 +1,89 @@
-/* Import this file in your React component using:
-import './WantService.css'; */
-
-/* Base styles for responsiveness */
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
+/* Base Colors */
+:root {
+  --primary-color: #4d6b4d; /* Green */
+  --secondary-color: #ff9999; /* Pink */
+  --accent-color: #ffd700; /* Gold */
 }
 
+/* Container */
 .want-service {
-  width: 100%; /* Adjust for desired width */
-  max-width: 700px; /* Adjust for desired maximum width */
-  margin: 0 auto; /* Center horizontally */
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 8px;
-  background-color: #f5f5f5; /* Adjust background color as needed */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  border-radius: 10px;
 }
 
-/* Form layout and styles */
+.want-service h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
 .want-service form {
   display: flex;
-  flex-wrap: wrap; /* Allow options to wrap onto multiple lines */
-  justify-content: space-between; /* Distribute form elements evenly */
-  width: 100%;
+  flex-direction: column;
 }
 
 .want-service label {
-  font-weight: bold;
   margin-bottom: 5px;
-  width: 48%; /* Adjust label width as needed */
+  color: var(--primary-color);
 }
 
-.want-service input,
-.want-service select {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 48%; /* Adjust input/select width as needed */
-  margin-bottom: 10px;
-  transition: all 0.2s ease-in-out;
+.want-service input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
 }
 
 .want-service select {
-  height: 36px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .want-service button {
-  background-color: #4CAF50; /* Adjust button color */
-  color: white;
-  padding: 12px 20px;
+  padding: 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  width: 100%; /* Make button full width */
-  margin-top: 20px;
 }
 
-.want-service button:hover {
-  background-color: #3e8e41; /* Adjust button hover color */
-}
-
-.want-service button[disabled] {
-  background-color: #ccc; /* Disable button styling */
-  cursor: default;
+.want-service button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .want-service .error {
   color: red;
   margin-top: 10px;
-  text-align: center;
 }
 
-/* Responsive adjustments (optional) */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .want-service label,
+  .want-service {
+    padding: 10px;
+  }
+
   .want-service input,
   .want-service select {
-    width: 100%;
+    font-size: 14px;
   }
 }
 
-/* Option layouts (choose one or modify as needed) */
+@media (max-width: 480px) {
+  .want-service {
+    padding: 5px;
+  }
 
-/* Option 1: Side-by-Side Options */
-.want-service.side-by-side input[type="radio"],
-.want-service.side-by-side input[type="checkbox"] {
-  margin-right: 10px; /* Add spacing between options */
-}
-
-/* Option 2: Row Layout with Maximum Two Options */
-.want-service.row-max-two input[type="radio"]:nth-child(2n+1),
-.want-service.row-max-two input[type="checkbox"]:nth-child(2n+1) {
-  margin-left: 0; /* Remove margin for the first option in each row */
-}
-
-/* Additional enhancements (optional) */
-
-/* Focus styles for improved accessibility */
-.want-service input:focus,
-.want-service select:focus {
-  outline: 2px solid #4CAF50; /* Adjust focus color as needed */
-}
-
-/* Error message styling */
-.want-service .error {
-  font-weight: bold; /* Increase emphasis for errors */
-}
-
-/* Example usage for different layouts */
-.want-service.side-by-side {
-  /* Apply side-by-side layout styles */
-}
-
-.want-service.row-max-two {
-  /* Apply row layout with max two options styles */
+  .want-service input,
+  .want-service select {
+    font-size: 12px;
+  }
 }

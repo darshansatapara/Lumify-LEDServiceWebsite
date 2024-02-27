@@ -22,10 +22,12 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="username">Hello! User</div>
-        <button className="nav-menu-button" onClick={toggleMenu}></button>
+        <button className="nav-menu-button" onClick={toggleMenu}>
+        menu
+        </button>
 
         <div className="FirstMenu">
-          <ul className="nav-menu">
+          <ul className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
             <li>
               <NavLink to="/" className="nav-links" onClick={toggleMenu}>
                 Home
@@ -89,6 +91,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+        <NavLink to="/login" className="nav-links" >
+                Login
+              </NavLink>
       </div>
     </nav>
   );

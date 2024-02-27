@@ -6,7 +6,7 @@ const WhyChooseUs = () => {
       <div className="why-container">
         <div>
         <h2>Why Choose Lumify?</h2>
-        <p>
+        <p className='whychooseper'>
           Investing in LED lighting is a smart decision for both your wallet and the
           environment. But with so many options available, why choose
           [Your Company Name]? Here are just a few reasons:
@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
           <div className="benefit">
             <i className="fas fa-lightbulb"></i>
             <h3>Expertise & Experience</h3>
-            <p>
+            <p className='whychooseper'>
               We have [number] years of experience in the LED lighting industry,
               and our team is composed of qualified and knowledgeable professionals.
               We can help you choose the right lighting solutions for your needs
@@ -26,7 +26,7 @@ const WhyChooseUs = () => {
           <div className="benefit">
             <i className="fas fa-check-circle"></i>
             <h3>Quality Products & Services</h3>
-            <p>
+            <p className='whychooseper'>
               We partner with trusted manufacturers to offer high-quality,
               energy-efficient LED products. We also prioritize quality service,
               from initial consultation to after-sales support.
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
           <div className="benefit">
             <i className="fas fa-shield-alt"></i>
             <h3>Competitive Prices & Warranties</h3>
-            <p>
+            <p className='whychooseper'>
               We offer competitive prices for our products and services, ensuring
               you get the best value for your money. We also back our products with
               comprehensive warranties for peace of mind.
@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
           <div className="benefit">
             <i className="fas fa-thumbs-up"></i>
             <h3>Customer Satisfaction Guarantee</h3>
-            <p>
+            <p className='whychooseper'>
               We are committed to your satisfaction. If you're not completely
               happy with our products or services, we'll work with you to make it
               right.
