@@ -91,9 +91,6 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <NavLink to="/login" className="nav-links" >
-                Login
-              </NavLink>
       </div>
     </nav>
   );

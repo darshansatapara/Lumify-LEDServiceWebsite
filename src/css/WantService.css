@@ -30,19 +30,14 @@
   color: var(--primary-color);
 }
 
-.want-service input {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 2px solid var(--primary-color);
-  border-radius: 5px;
-}
-
+.want-service input,
 .want-service select {
   margin-bottom: 15px;
   padding: 10px;
   border: 2px solid var(--primary-color);
   border-radius: 5px;
   background-color: #fff;
+  width: 100%; /* Adjust width to fill container */
 }
 
 .want-service button {
@@ -53,6 +48,7 @@
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  width: 100%; /* Adjust width to fill container */
 }
 
 .want-service button:disabled {
@@ -71,9 +67,15 @@
     padding: 10px;
   }
 
+  .want-service form {
+    width: 100%; /* Ensure form fills container */
+    margin: 0 auto; /* Center the form */
+  }
+
   .want-service input,
   .want-service select {
     font-size: 14px;
+    width: 100%; /* Adjust width to fill container */
   }
 }
 

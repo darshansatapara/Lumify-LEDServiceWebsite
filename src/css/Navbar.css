@@ -40,15 +40,14 @@
   top: 60px;
   left: -100%;
   background-color: #df9761;
-  width: 50%;
+  width: 40%;
   z-index: 1;
   transition: left 0.3s ease;
 }
 
 .nav-menu.active {
-  left: 50%;
-  right: 30%;
-  width: 30vw;
+  left: 0;
+
 }
 
 .nav-links {

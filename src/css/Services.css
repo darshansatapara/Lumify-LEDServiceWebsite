@@ -25,7 +25,11 @@
     .services h1 {
       font-size: 2rem;
     }
-    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
     .services p {
       font-size: 1rem;
     }
