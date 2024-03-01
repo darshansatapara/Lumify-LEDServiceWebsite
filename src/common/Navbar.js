@@ -1,17 +1,36 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../css/Navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = useState("false");
+  const [isLogin, setIsLogin] = useState();
+  const [UserName, setUserName] = useState();
   const toggleMenu = () => {
+    
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav className="navbar">
       <div className="nav-container">
+        <div className="nav-menu-button">
+          {isMenuOpen ? (
+            <FontAwesomeIcon
+              className="OpenIcon"
+              onClick={toggleMenu}
+              icon={faBars}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className="OpenIcon"
+              onClick={toggleMenu}
+              icon={faX}
+            />
+          )}
+        </div>
         <div>
           <NavLink to="/">
             <img
@@ -22,12 +41,8 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="username">Hello! User</div>
-        <button className="nav-menu-button" onClick={toggleMenu}>
-        menu
-        </button>
-
         <div className="FirstMenu">
-          <ul className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
+          <ul className={!isMenuOpen ? "nav-menu" : "nav-menu active"}>
             <li>
               <NavLink to="/" className="nav-links" onClick={toggleMenu}>
                 Home
@@ -84,12 +99,11 @@ const Navbar = () => {
                 My Bookings
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/login" className="nav-links" onClick={toggleMenu}>
-                Login
-              </NavLink>
-            </li>
           </ul>
+
+          <NavLink to="/login" className="nav-links LoginLink">
+            {isLogin ? "Login" : "{ UserName }"}
+          </NavLink>
         </div>
       </div>
     </nav>
