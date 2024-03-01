@@ -28,7 +28,7 @@ const BestProducts = () => {
 
   return (
     <div className="product-page">
-      <h1>Products</h1>
+      <h1>Best Products</h1>
       <input
         type="text"
         placeholder="Search products..."

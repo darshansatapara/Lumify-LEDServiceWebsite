@@ -15,18 +15,19 @@
   margin: 0 auto;
 }
 
-h1, h2 {
+.aboutFirstHeading, .aboutSecHeading {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   text-align: center;
   color: #fff; /* Adjust text color for better contrast on the darker background */
 }
 
-h1 {
+.aboutFirstHeading{
   font-size: 2rem;
+ 
 }
 
-h2 {
+.aboutSecHeading{
   font-size: 2rem;
   margin: 20px 0;
 }

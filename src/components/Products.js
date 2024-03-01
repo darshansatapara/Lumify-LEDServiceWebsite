@@ -28,7 +28,7 @@ const Products = () => {
 
   return (
     <div className="product-page">
-      <h1>Products</h1>
+      <h1 className='ProductHeading'>Products</h1>
       <input
         type="text"
         placeholder="Search products..."
