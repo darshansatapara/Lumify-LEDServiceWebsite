@@ -9,7 +9,6 @@ const Navbar = () => {
   const [isLogin, setIsLogin] = useState();
   const [UserName, setUserName] = useState();
   const toggleMenu = () => {
-    
     setIsMenuOpen(!isMenuOpen);
   };
 
@@ -102,7 +101,7 @@ const Navbar = () => {
           </ul>
 
           <NavLink to="/login" className="nav-links LoginLink">
-            {isLogin ? "Login" : "{ UserName }"}
+            {isLogin ? "Login" : "LogOut"}
           </NavLink>
         </div>
       </div>

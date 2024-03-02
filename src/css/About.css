@@ -3,6 +3,7 @@
 
 .about {
   padding: 40px;
+
   /* Add a colorful background gradient with a subtle space theme */
   background: linear-gradient(to right bottom, #35291d, #2a2e20e0 50%, #28231ad2 60%, #2f2a24e1);
   background-size: cover;
