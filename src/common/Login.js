@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Register from "./Registration";
 import "../css/RegistrationLogin.css";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../axios/axiosFile";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,9 +14,18 @@ const Login = () => {
     password: password,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+    try {
+      const response = await axiosInstance.post("/login", { email, password });
+      console.log("Login successful:", response.data);
+
+      // Optionally, you can redirect the user to another page
+      navigate("/");
+
+    } catch (error){
+      console.error("Login failed:", error.response.data.error);
+    }
   };
   const handleInput = (e) => {
     setValues((ele) => ({ ...ele, [e.target.name]: [e.target.value] }));
