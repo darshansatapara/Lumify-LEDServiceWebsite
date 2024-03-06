@@ -1,10 +1,22 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
+require("../backEnd/db/db");
 const app = express();
-app.use(cors());
+
+dotenv.config();
+
+const authController = require("../backEnd/controller/authController");
+
 app.use(express.json());
+app.use(cors());
 
 
-app.listen(8000, () => {
-  console.log("listening on 8000");
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });

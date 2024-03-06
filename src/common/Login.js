@@ -1,29 +1,30 @@
 import React, { useState } from "react";
-import Register from "./Registration";
 import "../css/RegistrationLogin.css";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axios/axiosFile";
 
-
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    email: email,
-    password: password,
+    email: "",
+    password: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post("/login", { email, password });
+      const response = await axiosInstance.get("/login", {
+        email: values.email,
+        password: values.password,
+      });
+      // console.log("response")
       console.log("Login successful:", response.data);
 
       // Optionally, you can redirect the user to another page
       navigate("/");
-
-    } catch (error){
+    } catch (error) {
       console.error("Login failed:", error.response.data.error);
     }
   };
@@ -36,7 +37,7 @@ const Login = () => {
       <div className="mainContainer">
         <div className="login-container">
           <h1 className="heading-register">Login</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} method="GET">
             <label htmlFor="email">Email</label>
             <input
               type="email"

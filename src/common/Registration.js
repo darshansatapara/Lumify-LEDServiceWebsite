@@ -2,70 +2,81 @@ import React, { useState } from "react";
 import "../css/RegistrationLogin.css";
 
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../axios/axiosFile.js";
-
+import client from "../axios/axiosFile.js";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [values, setValues] = useState({
-    name: name,
-    email: email,
-    password: password,
-    confirmPassword: confirmPassword,
+  // const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
-    if (password != confirmPassword) {
-      setError("password doesn`t match");
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
       return;
     }
-    try {
-      const response = await axiosInstance.post("/register", {
-        name,
-        email,
-        password,
-      });
-      console.log("Registration successful:", response.data);
 
-      // Optionally, you can redirect the user to another page
-      navigate("/login");
+    try {
+      const response = await client.post("/register", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+      });
+      console.log(response.data);
+      alert("Signup successful!");
+      navigate("/");
     } catch (error) {
-      console.error("Registration failed:", error.response.data.error);
+      console.log(error);
+      alert("Error occured while signing up!");
     }
   };
-  const handleInput = (e) => {
-    setValues((ele) => ({ ...ele, [e.target.name]: [e.target.value] }));
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="mainContainer">
       <div className="register-container">
         <h1 className="heading-register">Register</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="POST">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" onChange={handleInput} />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" onChange={handleInput} />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
           <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
             name="password"
-            onChange={handleInput}
+            value={formData.password}
+            onChange={handleChange}
           />
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
             id="confirmPassword"
             name="confirmPassword"
-            onChange={handleInput}
+            value={formData.confirmPassword}
+            onChange={handleChange}
           />
 
           <button type="submit" className="register-button">
