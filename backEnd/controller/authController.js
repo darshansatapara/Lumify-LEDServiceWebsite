@@ -7,11 +7,11 @@ require("dotenv").config();
 
 const register=router.post("/register", async (req, res) => {
   try {
-    const { username, email, password, confirmPassword } = req.body;
-    if (!username || !email || !password || !confirmPassword) {
+    const { name, email, password, confirmPassword } = req.body;
+    if (!name || !email || !password || !confirmPassword) {
       return res.status(400).json({
         message:
-          "Username, email, password, and confirm password are required.",
+          "name, email, password, and confirm password are required.",
       });
     }
     if (password !== confirmPassword) {
@@ -23,8 +23,8 @@ const register=router.post("/register", async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
     const userId = uuidv4(); // Generate a unique user ID
     const insertUserQuery =
-      "INSERT INTO users (id, username, email, password) VALUES (?, ?, ?, ?)";
-    db.query(insertUserQuery, [userId, username, email, hashPassword], (err) => {
+      "INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)";
+    db.query(insertUserQuery, [userId, name, email, hashPassword], (err) => {
       if (err) {
         return res.status(500).json({ message: "Internal server error." });
       }

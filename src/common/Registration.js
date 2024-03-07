@@ -10,17 +10,13 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     password: "",
     confirmPassword: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+
 
     try {
       const response = await client.post("/register", {
@@ -38,14 +34,14 @@ const Register = () => {
     }
   };
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: [e.target.value] });
   };
 
   return (
     <div className="mainContainer">
       <div className="register-container">
         <h1 className="heading-register">Register</h1>
-        <form onSubmit={handleSubmit} method="POST">
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input
             type="text"
