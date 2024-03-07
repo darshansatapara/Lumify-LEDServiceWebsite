@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../css/RegistrationLogin.css";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../axios/axiosFile";
+import client from "../axios/axiosFile";
+
 
 const Login = () => {
   // const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.get("/login", {
+      const response = await client.get("/login", {
         email: values.email,
         password: values.password,
       });

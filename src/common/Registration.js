@@ -31,7 +31,7 @@ const Register = () => {
       });
       console.log(response.data);
       alert("Signup successful!");
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       alert("Error occured while signing up!");
