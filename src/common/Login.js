@@ -3,10 +3,7 @@ import "../css/RegistrationLogin.css";
 import { useNavigate } from "react-router-dom";
 import client from "../axios/axiosFile";
 
-
 const Login = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
@@ -16,21 +13,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await client.get("/login", {
-        email: values.email,
-        password: values.password,
-      });
-      // console.log("response")
-      console.log("Login successful:", response.data);
-
-      // Optionally, you can redirect the user to another page
-      navigate("/");
+      const response = await client.post("/login", values);
+      if (response.data.success) {
+        navigate("/");
+      } else {
+        alert(response.data.message);
+      }
     } catch (error) {
-      console.error("Login failed:", error.response.data.error);
+      console.log("Error:", error);
+      console.log("Error response data:", error.response.data); 
     }
   };
+  
+  
+
   const handleInput = (e) => {
-    setValues((ele) => ({ ...ele, [e.target.name]: [e.target.value] }));
+    setValues((ele) => ({ ...ele, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -38,12 +36,13 @@ const Login = () => {
       <div className="mainContainer">
         <div className="login-container">
           <h1 className="heading-register">Login</h1>
-          <form onSubmit={handleSubmit} method="GET">
+          <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
+              value={values.email}
               onChange={handleInput}
             />
             <label htmlFor="password">Password</label>
@@ -51,6 +50,7 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
+              value={values.password}
               onChange={handleInput}
             />
             <button type="submit">Login</button>

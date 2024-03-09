@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/RegistrationLogin.css";
 
 import { useNavigate } from "react-router-dom";
@@ -6,33 +6,30 @@ import client from "../axios/axiosFile.js";
 
 const Register = () => {
   const navigate = useNavigate();
-  // const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Register");
+    if (formData.password !== formData.confirmPassword) {
+      console.log("password dosent match");
+    }
 
     try {
-      const response = await client.post("/register", {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        password: formData.password,
-      });
+      const response = await client.post("/register", formData);
       console.log(response.data);
       alert("Signup successful!");
       navigate("/login");
     } catch (error) {
+      console.log("error");
       console.log(error);
-      alert("Error occured while signing up!");
     }
   };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: [e.target.value] });
   };
@@ -41,7 +38,7 @@ const Register = () => {
     <div className="mainContainer">
       <div className="register-container">
         <h1 className="heading-register">Register</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="post">
           <label htmlFor="name">Name</label>
           <input
             type="text"
