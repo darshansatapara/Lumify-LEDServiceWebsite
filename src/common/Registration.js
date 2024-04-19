@@ -20,9 +20,9 @@ const Register = () => {
     }
 
     try {
-      const response = await client.post("/register", formData);
-      console.log(response.data);
+      const response = await client.post("/api/register", formData);
       alert("Signup successful!");
+      localStorage.setItem('token', response.data.authToken)
       navigate("/login");
     } catch (error) {
       console.log("error");

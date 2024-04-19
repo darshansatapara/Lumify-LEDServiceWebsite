@@ -1,15 +1,29 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+// Navbar.js
+
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../context/UserContext";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState("false");
-  const [isLogin, setIsLogin] = useState();
-  const [UserName, setUserName] = useState();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, fetchUserDetails } = useAuth();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch user details after login
+    fetchUserDetails();
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   return (
@@ -39,70 +53,22 @@ const Navbar = () => {
             />
           </NavLink>
         </div>
-        <div className="username">Hello! User</div>
+        <div className="username">Hello! {user ? user.name : "User"}</div>
         <div className="FirstMenu">
           <ul className={!isMenuOpen ? "nav-menu" : "nav-menu active"}>
-            <li>
-              <NavLink to="/" className="nav-links" onClick={toggleMenu}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/services"
-                className="nav-links"
-                onClick={toggleMenu}
-              >
-                Services
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/products"
-                className="nav-links"
-                onClick={toggleMenu}
-              >
-                Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/bookservice"
-                className="nav-links"
-                onClick={toggleMenu}
-              >
-                Book Services
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/bestproducts"
-                className="nav-links"
-                onClick={toggleMenu}
-              >
-                Best Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/about" className="nav-links" onClick={toggleMenu}>
-                About Us
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/mybookings"
-                className="nav-links"
-                onClick={toggleMenu}
-              >
-                My Bookings
-              </NavLink>
-            </li>
+            {/* Navigation links */}
           </ul>
-
-          <NavLink to="/login" className="nav-links LoginLink">
-            {isLogin ? "Login" : "LogOut"}
-          </NavLink>
+          {!localStorage.getItem("token") ? (
+            <NavLink className="nav-links LoginLink" to="/login">
+              Login
+            </NavLink>
+          ) : (
+            <div>
+              <NavLink onClick={handleLogout} className="nav-links LoginLink">
+                Logout
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
     </nav>

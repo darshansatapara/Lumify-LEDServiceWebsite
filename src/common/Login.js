@@ -13,19 +13,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await client.post("/login", values);
+      // console.log("hello");
+      const response = await client.post("/api/login", values);
       if (response.data.success) {
+        alert("Login success");
+        localStorage.setItem("token", response.data.authToken);
+        localStorage.setItem("email", response.data.email);
         navigate("/");
       } else {
         alert(response.data.message);
       }
     } catch (error) {
       console.log("Error:", error);
-      console.log("Error response data:", error.response.data); 
+      alert("Invalid credentials");
+      console.log("Error response data:", error.response);
     }
   };
-  
-  
 
   const handleInput = (e) => {
     setValues((ele) => ({ ...ele, [e.target.name]: e.target.value }));

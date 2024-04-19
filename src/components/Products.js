@@ -1,34 +1,25 @@
-import React, { useState } from 'react';
-import ProductCard from '../common/ProductCard';
-import "../css/Products.css"
-const products = [
-  {
-    id: 1,
-    name: 'LED Ceiling Light',
-    description: 'Energy-efficient and bright ceiling light with adjustable color temperature.',
-    price: 49.99,
-    image: 'logoes/celling-led.jpg', 
-  },
-  {
-    id: 2,
-    name: 'LED Strip Lights',
-    description: 'Customize your space with colorful and versatile LED strip lights.',
-    price: 24.99,
-    image: 'logoes/strip-led.jpg', 
-  },
-  // Add more products here
-];
+import React, { useEffect, useState } from "react";
+import ProductCard from "../common/ProductCard";
+import "../css/Products.css";
+import client from "../axios/axiosFile";
 
 const Products = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState([]);
 
   const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    product.productName.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  useEffect(() => {
+    client
+      .get("/api/items/products")
+      .then((response) => setProducts(response.data))
+      .catch((error) => console.error(error))
+  }, []);
 
   return (
     <div className="product-page">
-      <h1 className='ProductHeading'>Products</h1>
+      <h1 className="ProductHeading">Products</h1>
       <input
         type="text"
         placeholder="Search products..."
@@ -37,7 +28,7 @@ const Products = () => {
       />
       <div className="product-grid">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.productId} product={product} />
         ))}
       </div>
     </div>

@@ -4,6 +4,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.3s ease;
+  height: 55vh;
 }
 
 .product-card:hover {

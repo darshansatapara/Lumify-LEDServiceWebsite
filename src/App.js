@@ -11,23 +11,26 @@ import BestProducts from "./components/BestProducts";
 import Bookings from "./components/Booking";
 import WantService from "./components/WantService";
 import Payment from "./common/Payment";
+import {  UserProvider } from "./context/UserContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/bestproducts" element={<BestProducts />} />
-        <Route path="/mybookings" element={<Bookings />} />
-        <Route path="/bookservice" element={<WantService />} />
-        <Route path="/payment" element={<Payment />} />
-      </Routes>
+      <UserProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/bestproducts" element={<BestProducts />} />
+          <Route path="/mybookings" element={<Bookings />} />
+          <Route path="/bookservice" element={<WantService />} />
+          <Route path="/payment" element={<Payment />} />
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   );
 }
