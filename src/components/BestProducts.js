@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ProductCard from '../common/ProductCard';
 import "../css/Products.css"
+import Navbar from '../common/Navbar';
 const products = [
   {
     id: 1,
@@ -27,6 +28,8 @@ const BestProducts = () => {
   );
 
   return (
+    <>
+    <Navbar />
     <div className="product-page">
       <h1>Best Products</h1>
       <input
@@ -41,6 +44,7 @@ const BestProducts = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

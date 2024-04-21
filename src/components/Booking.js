@@ -1,5 +1,6 @@
 import React from "react";
 import BookingCard from "../common/BookingCard"; // Correct import
+import Navbar from "../common/Navbar";
 
 const bookingData = [
     // LED Light Installation (2 variations)
@@ -80,6 +81,8 @@ const bookingData = [
 
 const Bookings = () => {
   return (
+    <>
+    <Navbar />
     <div className="my-bookings">
       <h1>My Bookings</h1>
       <ul className="bookings-list">
@@ -90,6 +93,7 @@ const Bookings = () => {
       </ul>
       {bookingData.length === 0 && <p>No bookings found.</p>}
     </div>
+    </>
   );
 };
 

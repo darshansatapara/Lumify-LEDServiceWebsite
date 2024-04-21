@@ -6,9 +6,11 @@ import ProductHighlights from "../components/ProductHighlight";
 import WhyChooseUs from "../components/WhyChooseUs";
 // import TestimonialSlider from "./components/TestimonialSlider";
 import Footer from "../common/Footer";
+import Navbar from "../common/Navbar";
 
 function HomePage() {
-  return (
+  return (<>
+    <Navbar/>
     <div className="App">
       <HeroSection />
       <ProductHighlights />
@@ -17,6 +19,7 @@ function HomePage() {
       {/* <TestimonialSlider /> */}
       <Footer />
     </div>
+    </>
   );
 }
 

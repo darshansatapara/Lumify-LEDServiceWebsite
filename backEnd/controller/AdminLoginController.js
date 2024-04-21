@@ -7,20 +7,21 @@ const dotenv = require("dotenv");
 const jwtSecret = "hiIambrother";
 dotenv.config();
 
-router.post("/admin/register", async (req, res) => {
+router.post("/emp/register", async (req, res) => {
   try {
-    const { name, email, password,management} = req.body;
+    const { name, email, password,management } = req.body;
+    console.log(management);
     // console.log(name, email, password);
     if (!name || !email || !password || !management) {
       return res.status(400).json({
-        message: "name, email, password are required.",
+        message: "all filds are required.",
       });
     }
 
     // Check if the email already exists in the database
     db.query(
-      "SELECT * FROM user WHERE email = ?",
-      [email],
+      "SELECT * FROM admin WHERE email = ? AND management = ?",
+      [email,management],
       async (err, result) => {
         if (err) {
           return res.status(500).json({ message: "Internal server error." });
@@ -36,14 +37,15 @@ router.post("/admin/register", async (req, res) => {
 
         const userId = uuidv4(); // Generate a unique user ID
         const insertUserQuery =
-          "INSERT INTO user (name, email, password,management) VALUES (?, ?, ?,?)";
-        db.query(insertUserQuery, [name, email, hashPassword], (err) => {
+          "INSERT INTO admin (name, email, password,management) VALUES (?, ?, ?,?)";
+        db.query(insertUserQuery, [name, email, hashPassword,management], (err) => {
           if (err) {
             console.log(err);
             return res.status(500).json({ message: "Internal server error." });
           }
           const authToken = jwt.sign({ userId }, jwtSecret);
           return res.status(201).json({
+
             message: "User registered successfully.",
             userId,
             authToken,
@@ -57,13 +59,13 @@ router.post("/admin/register", async (req, res) => {
   }
 });
 
-router.post("/admin/login", async (req, res) => {
+router.post("/emp/login", async (req, res) => {
   try {
-    const { email, password ,management} = req.body;
+    const { email, password,management } = req.body;
     // console.log("i am reach this");
     db.query(
-      "SELECT * FROM admin WHERE email = ? management = ?",
-      [email],
+      "SELECT * FROM admin WHERE email = ? AND management = ?",
+      [email,management],
       async (err, result) => {
         if (err) {
           return res
@@ -96,12 +98,13 @@ router.post("/admin/login", async (req, res) => {
 });
 
 // get user by emailid
-router.get("/admin/:email", async (req, res) => {
+router.get("/emp/:email", async (req, res) => {
   const email = req.params.email;
+  const management = req.params.management;
 
   try {
-    const sql = "SELECT name FROM user WHERE email = ?";
-    db.query(sql, [email], (err, result) => {
+    const sql = "SELECT name FROM admin WHERE email = ? AND management = ? ";
+    db.query(sql, [email,management], (err, result) => {
       if (err) {
         console.error("Error fetching user details:", err);
         return res.status(500).json({ error: "Internal server error" });

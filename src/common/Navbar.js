@@ -1,31 +1,25 @@
-// Navbar.js
-
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+// import client from "./axios/axiosFile";
 import { useAuth } from "../context/UserContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, fetchUserDetails } = useAuth();
-  let navigate = useNavigate();
+  const { user,logOut } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // Fetch user details after login
-    fetchUserDetails();
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   const handleLogout = () => {
     localStorage.removeItem("token");
+    logOut();
     navigate("/login");
   };
-
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -56,7 +50,62 @@ const Navbar = () => {
         <div className="username">Hello! {user ? user.name : "User"}</div>
         <div className="FirstMenu">
           <ul className={!isMenuOpen ? "nav-menu" : "nav-menu active"}>
-            {/* Navigation links */}
+            <li>
+              <NavLink to="/" className="nav-links" onClick={toggleMenu}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/services"
+                className="nav-links"
+                onClick={toggleMenu}
+              >
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/products"
+                className="nav-links"
+                onClick={toggleMenu}
+              >
+                Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/bookservice"
+                className="nav-links"
+                onClick={toggleMenu}
+              >
+                Book Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/bestproducts"
+                className="nav-links"
+                onClick={toggleMenu}
+              >
+                Best Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="nav-links" onClick={toggleMenu}>
+                About Us
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/mybookings"
+                className="nav-links"
+                onClick={toggleMenu}
+              >
+                My Bookings
+              </NavLink>
+            </li>
           </ul>
           {!localStorage.getItem("token") ? (
             <NavLink className="nav-links LoginLink" to="/login">

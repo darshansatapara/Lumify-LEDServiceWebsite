@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 import "../css/About.css";
+import Navbar from "../common/Navbar";
 
 const About = () => {
   const companyName = "Lumify LED";
@@ -42,42 +43,45 @@ const About = () => {
   ];
 
   return (
-    <section className="about">
-      <div className="about-container">
-        <h1 className='aboutFirstHeading'>About {companyName}</h1>
-        <p>{missionStatement}</p>
-        <div className="about-info">
-          <div className="info-card">
-            <h3 className='aboutThirdHeading'>Founded</h3>
-            <p>{yearFounded}</p>
-          </div>
-          <div className="info-card">
-            <h3 className='aboutThirdHeading'>Team Size</h3>
-            <p>{teamSize}</p>
-          </div>
-          <div className="info-card">
-            <h3 className='aboutThirdHeading'>Award</h3>
-            <p>{randomAward}</p>
-          </div>
-        </div>
-        <h2 className='aboutSecHeading'>Our Values</h2>
-        <ul className="values-list">
-          {values.map((value, index) => (
-            <li key={index}>{value}</li>
-          ))}
-        </ul>
-        <h2 className='aboutSecHeading'>Meet Our Team</h2>
-        <div className="team-grid">
-          {teamMembers.map((member, index) => (
-            <div className="team-member" key={index}>
-              <h4>{member.name}</h4>
-              <p>{member.position}</p>
-              <p>{member.description}</p>
+    <>
+      <Navbar />
+      <section className="about">
+        <div className="about-container">
+          <h1 className="aboutFirstHeading">About {companyName}</h1>
+          <p>{missionStatement}</p>
+          <div className="about-info">
+            <div className="info-card">
+              <h3 className="aboutThirdHeading">Founded</h3>
+              <p>{yearFounded}</p>
             </div>
-          ))}
+            <div className="info-card">
+              <h3 className="aboutThirdHeading">Team Size</h3>
+              <p>{teamSize}</p>
+            </div>
+            <div className="info-card">
+              <h3 className="aboutThirdHeading">Award</h3>
+              <p>{randomAward}</p>
+            </div>
+          </div>
+          <h2 className="aboutSecHeading">Our Values</h2>
+          <ul className="values-list">
+            {values.map((value, index) => (
+              <li key={index}>{value}</li>
+            ))}
+          </ul>
+          <h2 className="aboutSecHeading">Meet Our Team</h2>
+          <div className="team-grid">
+            {teamMembers.map((member, index) => (
+              <div className="team-member" key={index}>
+                <h4>{member.name}</h4>
+                <p>{member.position}</p>
+                <p>{member.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../common/ProductCard";
 import "../css/Products.css";
 import client from "../axios/axiosFile";
+import Navbar from "../common/Navbar";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,6 +19,8 @@ const Products = () => {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <div className="product-page">
       <h1 className="ProductHeading">Products</h1>
       <input
@@ -32,6 +35,7 @@ const Products = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

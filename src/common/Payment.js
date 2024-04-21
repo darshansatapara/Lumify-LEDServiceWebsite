@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Payment.css'; // Import your CSS file
+import Navbar from './Navbar';
 
 const PaymentPage = ({ bookingData, onPaymentSuccess }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -43,6 +44,8 @@ const PaymentPage = ({ bookingData, onPaymentSuccess }) => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="payment-page-container">
       <h1>Make Payment</h1>
       <div className="payment-options">
@@ -94,6 +97,7 @@ const PaymentPage = ({ bookingData, onPaymentSuccess }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -39,7 +39,7 @@ form {
   align-items: center;
 }
 
-label {
+.registeruserlabel,.loginUserlabel {
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: #ffffff;

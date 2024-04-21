@@ -12,13 +12,16 @@ import Bookings from "./components/Booking";
 import WantService from "./components/WantService";
 import Payment from "./common/Payment";
 import {  UserProvider } from "./context/UserContext";
+import AdminLogin from "./common/AdminLogin";
+import AdminRegister from "./common/AdminRegistration";
 
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
-        <Navbar />
         <Routes>
+          <Route path="/login/admin/matchcategory" element={<AdminLogin />} />
+          <Route path="/register/admin/withcategory" element={<AdminRegister />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceCard from '../common/ServiceCard';
 import "../css/Services.css"
+import Navbar from '../common/Navbar';
 const services = [
   {
     title: 'Residential LED Installation',
@@ -37,6 +38,8 @@ const services = [
 
 const Services = () => {
   return (
+    <>
+    <Navbar/>
     <section className="services">
       <div className="container">
         <h1>Our Services</h1>
@@ -48,6 +51,7 @@ const Services = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

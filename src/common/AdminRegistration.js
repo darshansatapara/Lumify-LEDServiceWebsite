@@ -4,40 +4,44 @@ import "../css/RegistrationLogin.css";
 import { useNavigate } from "react-router-dom";
 import client from "../axios/axiosFile.js";
 import Navbar from "./Navbar.js";
+import ManagementDropdown from "./ManagementDropdown.js";
 
-const Register = () => {
+const AdminRegister = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    management: "",
   });
+
+  const handleManagementChange = (selectedManagement) => {
+    setFormData({ ...formData, management: selectedManagement });
+  };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: [e.target.value] });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Register");
     if (formData.password !== formData.confirmPassword) {
       console.log("password dosent match");
     }
 
     try {
-      const response = await client.post("/api/register", formData);
+      console.log(formData);
+      const response = await client.post("/api/admin/emp/register", formData);
       alert("Signup successful!");
-      localStorage.setItem("token", response.data.authToken);
-      navigate("/login");
+      localStorage.setItem("admintoken", response.data.authToken);
+      navigate("/admin/dashboard");
     } catch (error) {
       console.log("error");
       console.log(error);
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: [e.target.value] });
-  };
-
   return (
     <>
-      <Navbar />
       <div className="mainContainer">
         <div className="register-container">
           <h1 className="heading-register">Register</h1>
@@ -82,7 +86,7 @@ const Register = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
             />
-
+            <ManagementDropdown onChange={handleManagementChange} />
             <button type="submit" className="register-button">
               Register
             </button>
@@ -93,4 +97,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AdminRegister;

@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", require("./controller/authController"));
 app.use("/api/items", require("./controller/ProductController"));
+app.use("/api/admin", require("./controller/AdminLoginController"));
 app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}`);
 });

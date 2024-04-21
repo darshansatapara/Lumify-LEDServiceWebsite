@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/WantService.css"; // Import your CSS file
 import { useNavigate } from "react-router-dom";
+import Navbar from "../common/Navbar";
 
 const WantService = () => {
   const formatDate = (date) => {
@@ -145,6 +146,7 @@ const WantService = () => {
   };
 
   return (
+    <><Navbar/>
     <div className="want-service">
       <h1>Want Service</h1>
       <form onSubmit={handleSubmit}>
@@ -253,6 +255,7 @@ const WantService = () => {
         {submissionError && <p className="error">{submissionError}</p>}
       </form>
     </div>
+    </>
   );
 };
 
