@@ -1,22 +1,51 @@
-
-
 const express = require("express");
 const router = express.Router();
-const db = require("../db/db"); // Assuming you have a database connection module
+const db = require("../db/db");
+const multer = require("multer");
+const fs = require("fs");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+// POST route for adding a product
+const upload = multer({ storage: storage });
 
-// Route to fetch product data
-router.get("/products", (req, res) => {
-  // Query the database to fetch product data
-  const query = "SELECT * FROM products"; // Adjust the query according to your database schema
+router.post("/upload/product", upload.single("image"), (req, res) => {
+  const { name, description, price } = req.body;
+  const imagePath = req.file.path;
+  const imageBase64 = fs.readFileSync(imagePath, "base64");
 
-  db.query(query, (err, results) => {
+  const product = {
+    ProductName: name,
+    description: description,
+    price: price,
+    ProductImage: imageBase64,
+  };
+
+  db.query("INSERT INTO products SET ?", product, (err, result) => {
+    if (err) throw err;
+    console.log("Product added successfully!");
+    res.send("Product added successfully!");
+  });
+});
+
+// Route to get all products
+router.get("/fatchall/products", (req, res) => {
+  const selectQuery = "SELECT * FROM products";
+  db.query(selectQuery, (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
-      return res.status(500).json({ error: "Internal server error" });
-    }
+      res.status(500).send("Error fetching products");
 
-    // Send the product data as JSON response
-    res.json(results);
+    } else {
+      res.json(results);
+      console.log(results);
+      
+    }
   });
 });
 

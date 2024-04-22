@@ -14,6 +14,7 @@ import Payment from "./common/Payment";
 import {  UserProvider } from "./context/UserContext";
 import AdminLogin from "./common/AdminLogin";
 import AdminRegister from "./common/AdminRegistration";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/products" element={<Products />} />
