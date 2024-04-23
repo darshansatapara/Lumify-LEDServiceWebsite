@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
       <div className="productimg">
-      <img src={`data:image/jpeg;base64,${product.image}`} alt={product.name} />
+      <img src={`data:image/jpeg;base64,${product.productImage}`} alt={product.productName} />
       </div>
       <div className="productdetails">
         <h3>{product.productName}</h3>

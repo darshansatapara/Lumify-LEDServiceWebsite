@@ -43,7 +43,6 @@ router.get("/fatchall/products", (req, res) => {
 
     } else {
       res.json(results);
-      console.log(results);
       
     }
   });

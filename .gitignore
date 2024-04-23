@@ -9,6 +9,7 @@
 /coverage
 
 .env
+/uploads
 # production
 /build
 
